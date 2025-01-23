@@ -1,0 +1,190 @@
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #f0f2f5;
+    color: #333;
+    margin: 20px;
+}
+
+/* File Sharing Section */
+.file-sharing-section {
+    background-color: #4a4afa;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.file-sharing-section h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.file-sharing-section h2 {
+    font-size: 24px;
+}
+
+/* Upload Section Styles */
+.upload-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.upload-section form {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.upload-section input[type="file"] {
+    padding: 10px;
+    font-size: 14px;
+    width: 80%;
+    border: 2px solid #4a4afa;
+    border-radius: 10px;
+    color: #333;
+    cursor: pointer;
+}
+
+.upload-section input[type="file"]::file-selector-button {
+    background-color: #4a4afa;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.upload-section button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 40px;
+    background-color: #4a4afa;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.upload-section button:hover {
+    background-color: #3737db;
+}
+
+.upload-section p {
+    margin: 20px 0px 0px 0px; /* Add top margin for spacing */
+    font-size: 16px;  /* Adjust font size if needed */
+    color: #000000;   /* Change the text color */
+    width: 100%;      /* Ensure it takes the full width of the container */
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background-color: #4a4afa;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+td {
+    background-color: #fff;
+}
+
+tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+/* Action Links */
+a {
+    text-decoration: none;
+    color: #4a4afa;
+    font-weight: 600;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #3737db;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modal-header {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.close {
+    background-color: #4a4afa;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.close:hover {
+    background-color: #3737db;
+}

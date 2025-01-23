@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Sharing</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <!-- File Sharing Section -->
+    <div class="file-sharing-section">
+        <h1>File Sharing</h1>
+        <h2>Welcome, {{.Username}}</h2>
+
+    </div>
+
+    <!-- Upload Form Section -->
+    <div class="upload-section">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="files" multiple required>
+            <button type="submit">Upload</button>
+        </form>
+
+        <!-- Allowed File Types Information -->
+        <p>Allowed file types: <strong>.jpg, .jpeg, .png, .gif, .pdf, .txt, .doc, .docx, .xlsx</strong></p>
+    </div>
+
+    <!-- Files List Section -->
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Uploaded At</th>
+                <th>Uploaded By</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .Files}}
+            <tr>
+                <td>{{.Name}}</td>
+                <td>{{.Size}} bytes</td>
+                <td>{{.UploadedAt.Format "02 Jan 2006 15:04:05"}}</td>
+                <td>{{.Uploader}}</td>
+                <td>
+                    <a href="/download?file={{.Name}}"><i class='bx bxs-download'></i> Download</a>
+                    <a href="/delete?file={{.Name}}" class="delete-link" data-filename="{{.Name}}"><i
+                            class='bx bxs-trash'></i> Delete</a>
+                </td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+
+    <!-- Modal for Delete Confirmation -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">Are you sure you want to delete this file?</div>
+            <div class="modal-footer">
+                <button id="confirmDelete" class="close">Yes, Delete</button>
+                <button id="cancelDelete" class="close">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get modal element
+        const modal = document.getElementById("deleteModal");
+        let fileToDelete = '';
+
+        // Show the modal when delete link is clicked
+        document.querySelectorAll('.delete-link').forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent the default anchor click behavior
+                fileToDelete = this.dataset.filename; // Get the filename from data attribute
+                modal.style.display = "block"; // Show the modal
+            });
+        });
+
+        // Confirm delete action
+        document.getElementById("confirmDelete").onclick = function () {
+            window.location.href = '/delete?file=' + fileToDelete; // Redirect to delete URL
+        };
+
+        // Cancel delete action
+        document.getElementById("cancelDelete").onclick = function () {
+            modal.style.display = "none"; // Hide the modal
+        };
+
+        // Close the modal when clicking outside of it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none"; // Hide the modal
+            }
+        };
+
+        setInterval(function () {
+            window.location.reload();
+        }, 10000); // Refresh every 10 seconds
+    </script>
+</body>
+
+</html>
